@@ -1,7 +1,11 @@
 FROM quay.io/keycloak/keycloak:24.0
+
 ENV KEYCLOAK_ADMIN=admin \
     KEYCLOAK_ADMIN_PASSWORD=admin
-# Put your exported file here
-COPY realms /opt/keycloak/data/import/
-# Keep /auth if your portals are configured that way
-CMD ["start-dev","--import-realm","--http-relative-path=/auth"]
+
+# Use your existing export filename
+COPY realm-export.json /opt/keycloak/data/import/stratologia.json
+
+# Keep the /auth path and enable startup import
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+CMD ["start-dev","--http-relative-path=/auth","--import-realm"]
