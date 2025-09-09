@@ -1,6 +1,8 @@
 {
   "id": "1fee4b55-0ede-447b-acfb-dd30a99c3408",
   "realm": "stratologia",
+  "displayName": "",
+  "displayNameHtml": "",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -244,8 +246,8 @@
                 "view-users",
                 "query-realms",
                 "manage-users",
-                "view-realm",
                 "query-users",
+                "view-realm",
                 "view-authorization",
                 "manage-events",
                 "manage-identity-providers",
@@ -613,7 +615,9 @@
       "publicClient": true,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -636,18 +640,18 @@
       "clientId": "admin-portal",
       "name": "Admin Portal",
       "description": "",
-      "rootUrl": "http://localhost:5174/",
-      "adminUrl": "http://localhost:5174/",
-      "baseUrl": "http://localhost:5174/",
+      "rootUrl": "https://admin-ckrikas.duckdns.org/",
+      "adminUrl": "https://admin-ckrikas.duckdns.org/",
+      "baseUrl": "https://admin-ckrikas.duckdns.org/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:5174/*"
+        "https://admin-ckrikas.duckdns.org/*"
       ],
       "webOrigins": [
-        "http://localhost:5174"
+        "https://admin-ckrikas.duckdns.org/"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -660,7 +664,7 @@
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "http://localhost:5174/*",
+        "post.logout.redirect.uris": "https://admin-ckrikas.duckdns.org/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "use.refresh.tokens": "true",
@@ -668,9 +672,9 @@
         "client.use.lightweight.access.token.enabled": "false",
         "backchannel.logout.session.required": "true",
         "client_credentials.use_refresh_token": "false",
-        "tls.client.certificate.bound.access.tokens": "false",
-        "require.pushed.authorization.requests": "false",
         "acr.loa.map": "{}",
+        "require.pushed.authorization.requests": "false",
+        "tls.client.certificate.bound.access.tokens": "false",
         "display.on.consent.screen": "false",
         "pkce.code.challenge.method": "S256",
         "token.response.type.bearer.lower-case": "false"
@@ -712,7 +716,9 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -735,18 +741,18 @@
       "clientId": "citizen-portal",
       "name": "Citizen Portal",
       "description": "",
-      "rootUrl": "http://localhost:5173/",
-      "adminUrl": "http://localhost:5173/",
-      "baseUrl": "http://localhost:5173/",
+      "rootUrl": "https://citizen-ckrikas.duckdns.org/",
+      "adminUrl": "https://citizen-ckrikas.duckdns.org",
+      "baseUrl": "https://citizen-ckrikas.duckdns.org/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:5173/*"
+        "https://citizen-ckrikas.duckdns.org/*"
       ],
       "webOrigins": [
-        "http://localhost:5173"
+        "https://citizen-ckrikas.duckdns.org"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -759,7 +765,7 @@
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "http://localhost:5173/*",
+        "post.logout.redirect.uris": "https://citizen-ckrikas.duckdns.org/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "use.refresh.tokens": "true",
@@ -811,7 +817,9 @@
       "publicClient": false,
       "frontchannelLogout": false,
       "protocol": "openid-connect",
-      "attributes": {},
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
@@ -1165,6 +1173,7 @@
           "config": {
             "introspection.token.claim": "true",
             "multivalued": "true",
+            "userinfo.token.claim": "true",
             "user.attribute": "foo",
             "id.token.claim": "true",
             "access.token.claim": "true",
@@ -1249,7 +1258,8 @@
           "config": {
             "id.token.claim": "true",
             "introspection.token.claim": "true",
-            "access.token.claim": "true"
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
           }
         }
       ]
@@ -1492,14 +1502,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-usermodel-property-mapper",
             "saml-user-attribute-mapper",
-            "oidc-address-mapper",
-            "saml-user-property-mapper",
             "oidc-usermodel-attribute-mapper",
             "oidc-full-name-mapper",
-            "oidc-usermodel-property-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-address-mapper",
             "saml-role-list-mapper",
-            "oidc-sha256-pairwise-sub-mapper"
+            "saml-user-property-mapper"
           ]
         }
       },
@@ -1564,13 +1574,13 @@
         "config": {
           "allowed-protocol-mapper-types": [
             "oidc-usermodel-property-mapper",
-            "oidc-full-name-mapper",
-            "saml-role-list-mapper",
-            "saml-user-property-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "saml-user-attribute-mapper",
             "oidc-address-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "oidc-full-name-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "saml-user-property-mapper"
           ]
         }
       }
@@ -2277,13 +2287,19 @@
   "firstBrokerLoginFlow": "first broker login",
   "attributes": {
     "cibaBackchannelTokenDeliveryMode": "poll",
-    "cibaExpiresIn": "120",
     "cibaAuthRequestedUserHint": "login_hint",
-    "oauth2DeviceCodeLifespan": "600",
+    "clientOfflineSessionMaxLifespan": "0",
     "oauth2DevicePollingInterval": "5",
-    "parRequestUriLifespan": "60",
+    "clientSessionIdleTimeout": "0",
+    "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5",
-    "realmReusableOtpCode": "false"
+    "realmReusableOtpCode": "false",
+    "cibaExpiresIn": "120",
+    "oauth2DeviceCodeLifespan": "600",
+    "parRequestUriLifespan": "60",
+    "clientSessionMaxLifespan": "0",
+    "frontendUrl": "https://auth-ckrikas.duckdns.org/auth",
+    "acr.loa.map": "{}"
   },
   "keycloakVersion": "24.0.5",
   "userManagedAccessAllowed": false,
