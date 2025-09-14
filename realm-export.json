@@ -28,7 +28,7 @@
   "oauth2DeviceCodeLifespan": 600,
   "oauth2DevicePollingInterval": 5,
   "enabled": true,
-  "sslRequired": "NONE",
+  "sslRequired": "none",
   "registrationAllowed": false,
   "registrationEmailAsUsername": false,
   "rememberMe": false,
@@ -240,8 +240,8 @@
             "client": {
               "realm-management": [
                 "view-clients",
-                "create-client",
                 "impersonation",
+                "create-client",
                 "manage-realm",
                 "view-users",
                 "query-realms",
@@ -640,18 +640,18 @@
       "clientId": "admin-portal",
       "name": "Admin Portal",
       "description": "",
-      "rootUrl": "https://admin-ckrikas.duckdns.org/",
-      "adminUrl": "https://admin-ckrikas.duckdns.org/",
-      "baseUrl": "https://admin-ckrikas.duckdns.org/",
+      "rootUrl": "http://20.90.162.52:5174",
+      "adminUrl": "",
+      "baseUrl": "/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "https://admin-ckrikas.duckdns.org/*"
+        "http://20.90.162.52:5174/*"
       ],
       "webOrigins": [
-        "https://admin-ckrikas.duckdns.org/"
+        "http://20.90.162.52:5174"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -664,7 +664,7 @@
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "https://admin-ckrikas.duckdns.org/*",
+        "post.logout.redirect.uris": "http://20.90.162.52:5174/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "use.refresh.tokens": "true",
@@ -741,18 +741,18 @@
       "clientId": "citizen-portal",
       "name": "Citizen Portal",
       "description": "",
-      "rootUrl": "https://citizen-ckrikas.duckdns.org/",
-      "adminUrl": "https://citizen-ckrikas.duckdns.org",
-      "baseUrl": "https://citizen-ckrikas.duckdns.org/",
+      "rootUrl": "http://20.90.162.52:5173",
+      "adminUrl": "",
+      "baseUrl": "/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "https://citizen-ckrikas.duckdns.org/*"
+        "http://20.90.162.52:5173/*"
       ],
       "webOrigins": [
-        "https://citizen-ckrikas.duckdns.org"
+        "http://20.90.162.52:5173"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -765,7 +765,7 @@
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "post.logout.redirect.uris": "https://citizen-ckrikas.duckdns.org/*",
+        "post.logout.redirect.uris": "http://20.90.162.52:5173/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "use.refresh.tokens": "true",
@@ -1502,14 +1502,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-property-mapper",
-            "saml-user-attribute-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "saml-user-property-mapper",
             "oidc-usermodel-attribute-mapper",
             "oidc-full-name-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
+            "oidc-usermodel-property-mapper",
             "oidc-address-mapper",
-            "saml-role-list-mapper",
-            "saml-user-property-mapper"
+            "saml-user-attribute-mapper",
+            "saml-role-list-mapper"
           ]
         }
       },
@@ -1573,14 +1573,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-property-mapper",
             "oidc-address-mapper",
-            "oidc-full-name-mapper",
             "oidc-usermodel-attribute-mapper",
-            "saml-role-list-mapper",
-            "saml-user-attribute-mapper",
+            "saml-user-property-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "saml-user-property-mapper"
+            "oidc-full-name-mapper",
+            "saml-role-list-mapper",
+            "oidc-usermodel-property-mapper",
+            "saml-user-attribute-mapper"
           ]
         }
       }
@@ -2298,7 +2298,7 @@
     "oauth2DeviceCodeLifespan": "600",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
-    "frontendUrl": "https://auth-ckrikas.duckdns.org/auth",
+    "frontendUrl": "",
     "acr.loa.map": "{}"
   },
   "keycloakVersion": "24.0.5",
